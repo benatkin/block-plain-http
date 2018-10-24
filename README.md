@@ -25,9 +25,7 @@ background.js
 
 ``` js
 chrome.webRequest.onBeforeRequest.addListener(
-  function({url}) {
-    return {cancel: url.indexOf("http:") == 0};
-  },
+  ({url}) => { return {cancel: url.startsWith('http:')}; },
   {urls: ["<all_urls>"]},
   ["blocking"]
 );
